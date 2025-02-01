@@ -1,37 +1,86 @@
-# Instalação de Ferramentas de Jogos no Linux (Debian/Ubuntu/Mint)
 
-Este script foi projetado para configurar um ambiente de jogos completo no Linux, com suporte a ferramentas de jogos como Steam, Lutris, Heroic, RPCS3, Xenia, e outros. Ele foi testado para funcionar nas distribuições Debian, Ubuntu, e Linux Mint.
+# Garuda Gamer to Mint - Script de Instalação para Jogos no Linux
 
-## Requisitos
-- Este script deve ser executado com permissões de root.
-- O sistema deve ser baseado em Debian/Ubuntu ou Mint.
-  
-## Funcionalidades
-Este script irá:
-1. Atualizar o sistema.
-2. Instalar pacotes essenciais como Steam, Lutris, Heroic, MangoHud, GameMode e outros.
-3. Adicionar repositórios necessários, como o WineHQ.
-4. Configurar MangoHud e GameMode para otimizar o desempenho de jogos.
-5. Instalar emuladores populares, como PCSX2, Dolphin, RetroArch, RPCS3 e Xenia.
-6. Oferecer a opção de instalação de ferramentas adicionais como Wine, PlayOnLinux, Kdenlive, OBS Studio e CoreCtrl.
+Este script tem como objetivo transformar sua distribuição Linux baseada em Debian/Ubuntu/Mint em uma máquina de jogos com várias ferramentas e otimizações. Ele instalará as ferramentas de jogos mais populares, como Steam, Lutris, Heroic Games Launcher, além de otimizações para o desempenho da GPU e do sistema. Ele também inclui emuladores de consoles e ferramentas de automação para configurar o hardware de forma mais eficiente.
 
-## Passo a Passo
-1. **Atualização do Sistema**: O script começa com a atualização do sistema, garantindo que os pacotes estejam atualizados.
-2. **Instalação de Ferramentas**: Ele instala várias ferramentas de jogos, incluindo Steam, Lutris e Heroic. O usuário pode escolher o que deseja instalar.
-3. **Configuração de Desempenho**: Após a instalação, ele configura o MangoHud para monitoramento de FPS e outras métricas, além de configurar o GameMode para otimizar o desempenho.
-4. **Emuladores**: O script instala os emuladores de PS2 (PCSX2), GameCube/Wii (Dolphin), multi-plataforma (RetroArch), PS3 (RPCS3) e Xbox (Xenia), com opções para o usuário escolher se deseja instalá-los.
+## Funcionalidades:
 
-## Como Usar
-1. **Baixe o script**.
-2. **Dê permissões de execução** ao script com o comando:
+### 1. **Pacotes Essenciais**
+   - **Steam**: Plataforma para jogos no Linux.
+   - **Lutris**: Plataforma de jogos que suporta títulos nativos e jogos do Windows via Wine.
+   - **Heroic Games Launcher**: Para jogos da Epic Games Store.
+   - **MangoHud**: Ferramenta de monitoramento de FPS, uso de CPU, GPU, RAM e muito mais.
+   - **GameMode**: Otimização dinâmica de desempenho enquanto joga.
+   - **Wine, Winetricks, PlayOnLinux**: Ferramentas para executar jogos do Windows.
+
+### 2. **Repositórios Necessários**
+   - Instalação do repositório do WineHQ para jogos Windows.
+   - Adiciona a arquitetura i386 para suporte a jogos de 32 bits.
+
+### 3. **Ferramentas de Otimização**
+   - **MangoHud**: Configura o MangoHud para exibir informações úteis como FPS, uso de hardware, etc.
+   - **GameMode**: Instala o GameMode para melhorar o desempenho dos jogos.
+   - **Mesa-utils**: Para otimizar o desempenho da GPU.
+   
+### 4. **Emuladores de Consoles**
+   - **PCSX2** (PS2): Emulador de PlayStation 2.
+   - **Dolphin** (GameCube/Wii): Emulador de GameCube e Wii.
+   - **RetroArch**: Emulador multi-plataforma para vários consoles antigos.
+   - **RPCS3** (PS3): Emulador de PlayStation 3.
+   - **Xenia** (Xbox): Emulador de Xbox 360.
+
+### 5. **Ferramentas de Automação e Controle de Hardware**
+   - **CoreCtrl**: Ferramenta para controle de hardware (temperatura, velocidade do ventilador, etc.).
+   - **Overclocking para AMD**: Instala ferramentas para overclocking de placas gráficas AMD.
+   - **TLP, Powertop e cpufrequtils**: Ferramentas para otimização de energia e gerenciamento de desempenho da CPU.
+
+### 6. **Instalação via Flatpak**
+   - **MangoRoot**: Instala o MangoRoot via Flatpak para otimizar a Steam e melhorar o desempenho geral dos jogos.
+
+## Como Usar:
+
+1. **Baixe o script**:
+   Faça o download do script em [garuda-gamer-to-mint.sh](./garuda-gamer-to-mint.sh).
+
+2. **Dê permissão de execução**:
+   Abra o terminal e navegue até o diretório onde o script foi baixado, então execute o seguinte comando:
    ```bash
    chmod +x garuda-gamer-to-mint.sh
    ```
-3. **Execute o script** com privilégios de root:
+
+3. **Execute o script**:
+   Para executar o script, use o comando:
    ```bash
    sudo ./garuda-gamer-to-mint.sh
    ```
-4. **Siga as instruções interativas** durante o processo de instalação.
+   O script pedirá confirmação antes de instalar cada ferramenta. Você pode escolher se deseja ou não instalar as opções oferecidas.
 
-## Licença
-Este script é de uso livre e está disponível sob a licença MIT.
+## Funcionalidades Interativas:
+
+O script permite que você escolha as opções que deseja instalar durante a execução:
+
+- **Atualizar o Sistema**: Pergunta se você deseja atualizar o sistema antes de iniciar a instalação.
+- **Instalar Pacotes Essenciais**: Permite a instalação do Steam, Lutris, Heroic, entre outros.
+- **Instalar Emuladores**: Você pode escolher entre emuladores de PS2, PS3, Xbox, GameCube e outros.
+- **Ferramentas de Automação e Controle de Hardware**: Instala o CoreCtrl, ferramentas de overclocking e otimização de energia.
+
+## Dependências:
+
+- **Sistema baseado em Debian/Ubuntu/Mint**.
+- **Permissões de root** para instalar pacotes e ferramentas.
+- **Conexão com a internet** para baixar os pacotes.
+
+## Observações:
+
+- Este script foi desenvolvido e testado para funcionar em sistemas baseados em **Debian**, **Ubuntu** e **Linux Mint**.
+- Se você encontrar algum problema ou desejar contribuir com melhorias, sinta-se à vontade para abrir uma **issue** ou enviar um **pull request**.
+
+## Licença:
+
+Este script é de código aberto e está licenciado sob a licença **MIT**. Você pode usá-lo, modificá-lo e distribuí-lo como desejar.
+
+---
+
+**Nota**: Certifique-se de ter backup dos seus dados antes de executar qualquer script que modifique o sistema.
+
+
