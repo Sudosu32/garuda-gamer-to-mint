@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script para instalação de ferramentas de jogos compatíveis com Linux (Debian/Ubuntu/Mint)
+# Script para instalação de ferramentas de jogos e otimizações no Linux (Debian/Ubuntu/Mint)
 # Com foco nas distribuições baseadas em Debian, Ubuntu e Linux Mint
 # Este script instalará ferramentas como Steam, Lutris, Heroic, MangoHud, GameMode e outros
 
@@ -28,7 +28,13 @@ instalar_pacotes_essenciais() {
     read -r resposta
     if [ "$resposta" == "y" ]; then
         echo "Instalando pacotes essenciais..."
-        apt install -y         steam lutris heroic-games-launcher         mangohud gamemode         wine winetricks playonlinux         kdenlive obs-studio         corectrl         flatpak
+        apt install -y \
+        steam lutris heroic-games-launcher \
+        mangohud gamemode \
+        wine winetricks playonlinux \
+        kdenlive obs-studio \
+        corectrl \
+        flatpak
     else
         echo "Instalação de pacotes essenciais cancelada."
     fi
@@ -55,7 +61,6 @@ configurar_mangohud() {
     read -r resposta
     if [ "$resposta" == "y" ]; then
         echo "Configurando o MangoHud..."
-        # Definindo variáveis de ambiente para o MangoHud
         echo "export MANGOHUD=1" >> ~/.bashrc
         echo "export MANGOHUD_CONFIG=1" >> ~/.bashrc
         source ~/.bashrc
@@ -146,6 +151,38 @@ instalar_emuladores() {
     fi
 }
 
+# Função para instalar ferramentas de automação e controle de hardware
+instalar_automacao() {
+    echo "Deseja instalar ferramentas de automação e controle (CoreCtrl, Overclocking, etc.)? (y/n)"
+    read -r resposta
+    if [ "$resposta" == "y" ]; then
+        echo "Instalando ferramentas de automação e controle..."
+
+        # Instalar CoreCtrl (controle de hardware)
+        echo "Deseja instalar o CoreCtrl (controle de hardware)? (y/n)"
+        read -r resposta_corectrl
+        if [ "$resposta_corectrl" == "y" ]; then
+            apt install -y corectrl
+        fi
+
+        # Instalar ferramentas de overclocking para AMD (se necessário)
+        echo "Deseja instalar ferramentas de overclocking para AMD? (y/n)"
+        read -r resposta_overclock
+        if [ "$resposta_overclock" == "y" ]; then
+            apt install -y amd-overdrive
+        fi
+
+        # Instalar outras ferramentas de automação
+        echo "Deseja instalar ferramentas de automação como TLP, Powertop e cpufrequtils? (y/n)"
+        read -r resposta_tlp
+        if [ "$resposta_tlp" == "y" ]; then
+            apt install -y tlp powertop cpufrequtils
+        fi
+    else
+        echo "Instalação de ferramentas de automação cancelada."
+    fi
+}
+
 # Função para interação com o usuário
 interacao_usuario() {
     atualizar_sistema
@@ -156,6 +193,7 @@ interacao_usuario() {
     otimizar_gpu
     instalar_mangoroot
     instalar_emuladores
+    instalar_automacao
     echo "Processo de instalação concluído!"
 }
 
